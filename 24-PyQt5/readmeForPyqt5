@@ -1,0 +1,12 @@
+
+C:\Users\emre_\AppData\Local\Programs\Python\Python38-32\Lib\site-packages\pyqt5_tools\Qt\bin 
+
+adresine gidip designer uygulamasını açıyoruz istediğimiz arayüzü tasarlayıp klasörümüzün içerisine kaydediyoruz.
+
+designer programında yaptığımız MainWindow.ui bize xml bir kod çıktısı verir
+pyuic5 MainWindow.ui -o MainWindow.py  terminale bunu yazarak xml kodunu python koduna dönüştürüyoruz
+
+py dosyası üzerinden kendimiz kod değişikliği yapmamalıyız scripti (pyuic5 MainWindow.ui -o MainWindow.py) çalıştırınca sıfırlanıyor zaten
+
+programımızda kullanmak istersek aşşağıdaki şekilde ekleme yapabilirz
+from MainWindow import Ui_MainWindow 

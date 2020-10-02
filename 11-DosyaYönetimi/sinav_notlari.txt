@@ -1,0 +1,5 @@
+ahmet yılmaz : 60,70,80
+mehmet yılmaz : 90,70,80
+deniz efe : 60,80,90
+emre cat : 100,100,90
+enes cat : 100,100,100

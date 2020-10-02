@@ -1,0 +1,39 @@
+1-django-admin startproject catalog
+yazarak django projesini oluşturuyoruz
+1.1- python .\manage.py runserver ile projeyi çalıştırıyoruz
+
+2- python manage.py startapp pages
+yazarak projeye uygulama ekliyoruz
+
+3- oluşturduğumuz uygulamanın apps.py dosyasındaki class ismini  --PagesConfig-- ana uygulamamızda 
+settings.py içerisindeki INSTALLED_APPS kısmına 'pages.apps.PagesConfig' şeklinde ekliyoruz.
+
+4- oluşturduğumuz uygulamanın viwes.py dosyasına Response için fonksiyon tanımlıyoruz
+    from django.http import HttpResponse
+    def index(request):
+    return HttpResponse('<h1>Hello from pages app </h1>')
+şeklinde tanımlama yapıyoruz geriye basit bir html page döndürüyoruz
+
+5- oluşturduğumuz uygulamanın içerisine root'da olduğu gibi benzer bir urls.py ekliyoruz
+    from django.urls import path
+    from . import views
+    urlpatterns=[
+    path('', views.index, name='index')
+şeklinde tanımlama yapıyoruz 
+
+6- uygulama içerisindeki url'ye root da ulaşmak için urls.py'ye path ekliyoruz
+    from django.urls import path,include
+    path('',include('pages.urls')),
+
+7- templates klasörü eklenir ve içerisinde html sayfa tanımlamaları yapılır.
+8- templatesi kullanabilmek için root klasöründeki settings.py içerisindeki TEMPLATES dizisine 
+	'DIRS': [os.path.join(BASE_DIR,'templates')],
+   eklemesi yapılır
+9- artık kendimiz direkt html sayfasına yönlendirme yapmak için pages dosyasındaki views.py de bulunan index fonksiyonunda değişiklik yapıyoruz
+
+10- html sayfalarındaki ortak bulunan alanları layout.html içerisinde yazdıktan sonra farklı yazacağımız alanları kendi alanlarında 
+	{%extends 'layout.html' %}
+	{% block content %}
+  	  <h1> index.html page</h1>
+	{% endblock %}
+şeklinde tanımlıyoruz
